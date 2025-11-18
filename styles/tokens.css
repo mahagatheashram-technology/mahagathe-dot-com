@@ -1,0 +1,36 @@
+:root {
+  /* Core brand */
+  --brand-maroon-900: #4c1515;
+  --brand-plum-800: #44233b;
+  --brand-rose-700: #7e4555;
+  --brand-mauve-600: #694c5c;
+  --brand-rose-500: #8c4e5d;
+
+  /* Mahagathe Red + accents */
+  --mahagathe-red: #f60000; /* primary "red" seen in banners/buttons */
+  --pink-400: #fd8f8f;
+  --pink-200: #ffd3d3;
+  --neutral-300: #cfb7b3;
+  --neutral-200: #cba7a7;
+
+  /* Surfaces */
+  --cream-50: #fff0e3;
+  --cream-60: #ffefe3;
+  --cream-70: #ffefe2;
+  --white: #ffffff;
+
+  /* Text */
+  --ink-strong: #2b2b2b;
+  --ink-default: #333333;
+  --ink-muted: #474747;
+  --ink-subtle: #666666;
+  --ink-faint: #888888;
+  --ink-inverse: #ffffff;
+  --ink-black: #000000;
+
+  /* Social success (WhatsApp) */
+  --whatsapp: #25d366;
+
+  /* Header banner gradient (org style) */
+  --banner-gradient: linear-gradient(180deg, #f60000 0%, #4c1515 100%);
+}

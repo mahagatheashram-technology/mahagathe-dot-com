@@ -1,0 +1,48 @@
+[
+  {
+    "id": "1",
+    "caption": "Community health camp providing essential medical services",
+    "image": "/placeholder-activity-1.jpg"
+  },
+  {
+    "id": "2",
+    "caption": "Food distribution program serving families in need",
+    "image": "/placeholder-activity-2.jpg"
+  },
+  {
+    "id": "3",
+    "caption": "Educational workshop for children and youth",
+    "image": "/placeholder-activity-3.jpg"
+  },
+  {
+    "id": "4",
+    "caption": "Emergency relief support during crisis situations",
+    "image": "/placeholder-activity-4.jpg"
+  },
+  {
+    "id": "5",
+    "caption": "Ration kit distribution to support families",
+    "image": "/placeholder-activity-5.jpg"
+  },
+  {
+    "id": "6",
+    "caption": "Learning materials and education kit distribution",
+    "image": "/placeholder-activity-6.jpg"
+  },
+  {
+    "id": "7",
+    "caption": "Community meal service bringing people together",
+    "image": "/placeholder-activity-7.jpg"
+  },
+  {
+    "id": "8",
+    "caption": "Healthcare assistance program in action",
+    "image": "/placeholder-activity-8.jpg"
+  },
+  {
+    "id": "9",
+    "caption": "Livelihood support and skill development initiatives",
+    "image": "/placeholder-activity-9.jpg"
+  }
+]
+
