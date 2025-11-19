@@ -4,7 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "mahagathe.org",
+      },
+    ],
   },
 };
 

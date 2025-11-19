@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Mahagathe",
+  name: "Mahagathe Foundation",
   tagline: "Care in Action",
   url: "https://mahagathe.com",
   description:

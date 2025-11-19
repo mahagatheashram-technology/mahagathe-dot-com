@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
+import { useScrollAnimation } from "@/lib/use-scroll-animation";
 import {
   Heart,
   UtensilsCrossed,
@@ -19,27 +20,45 @@ const programIcons = {
 };
 
 export function Programs() {
-  const [activeProgram, setActiveProgram] = useState(
-    siteConfig.programs[0].name
-  );
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const { ref, isVisible } = useScrollAnimation();
+
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % siteConfig.programs.length);
+    }, 10000); // 10 seconds
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const activeProgram = siteConfig.programs[activeIndex].name;
 
   return (
     <section
+      ref={ref}
       id="programs"
-      className="bg-[var(--cream-60)] py-16 md:py-20"
+      className={`bg-[var(--cream-60)] py-16 md:py-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
       aria-labelledby="programs-heading"
     >
       <Container maxWidth="narrow">
         <h2
           id="programs-heading"
-          className="text-4xl md:text-5xl font-bold text-[var(--ink-strong)] text-center mb-4 md:mb-6"
+          className="text-4xl md:text-5xl font-bold text-[var(--ink-strong)] text-center mb-8 md:mb-10 animate-slide-up"
         >
           Our Programs
         </h2>
-        <div className="mt-6 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] items-start">
+        <div
+          className="mt-6 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] items-stretch animate-fade-in animation-delay-200"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <ProgramTabs
-            activeProgram={activeProgram}
-            onChange={setActiveProgram}
+            activeIndex={activeIndex}
+            onChange={setActiveIndex}
           />
           <ProgramDetail activeProgram={activeProgram} />
         </div>
@@ -49,48 +68,57 @@ export function Programs() {
 }
 
 interface ProgramTabsProps {
-  activeProgram: string;
-  onChange: (name: string) => void;
+  activeIndex: number;
+  onChange: (index: number) => void;
 }
 
-function ProgramTabs({ activeProgram, onChange }: ProgramTabsProps) {
+function ProgramTabs({ activeIndex, onChange }: ProgramTabsProps) {
   return (
     <div
-      className="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible pb-1 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+      className="flex md:flex-col gap-4 overflow-x-auto md:overflow-visible pb-1 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
       role="tablist"
       aria-label="Program selector"
     >
-      {siteConfig.programs.map((program) => {
+      {siteConfig.programs.map((program, index) => {
         const Icon = programIcons[program.name as keyof typeof programIcons];
-        const isActive = activeProgram === program.name;
+        const isActive = activeIndex === index;
 
         return (
           <button
             key={program.name}
             type="button"
-            onClick={() => onChange(program.name)}
+            onClick={() => onChange(index)}
             className={cn(
-              "flex items-center gap-3 rounded-2xl border px-4 py-3 text-left shadow-sm transition-all",
+              "flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-300",
               "min-w-[12rem] md:min-w-0",
               isActive
-                ? "bg-[var(--white)] border-[var(--brand-rose-700)]/60 shadow-md"
-                : "bg-[var(--white)]/70 border-[var(--neutral-200)]/70 hover:bg-[var(--white)]"
+                ? "bg-[var(--white)] border-[var(--brand-rose-700)]/60 shadow-lg shadow-[#f60000]/40 scale-[1.02]"
+                : "bg-[var(--white)]/70 border-[var(--neutral-200)]/70 hover:bg-[var(--white)] hover:shadow-md hover:shadow-[#f60000]/40 hover:-translate-y-0.5"
             )}
             role="tab"
             aria-selected={isActive}
           >
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-xl bg-[var(--brand-rose-700)]/10 flex items-center justify-center">
+              <div className={cn(
+                "w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300",
+                isActive ? "bg-[var(--brand-rose-700)]/10" : "bg-[var(--neutral-200)]/30"
+              )}>
                 {Icon && (
                   <Icon
-                    className="w-5 h-5 text-[var(--brand-rose-700)]"
+                    className={cn(
+                      "w-5 h-5 transition-colors duration-300",
+                      isActive ? "text-[var(--brand-rose-700)]" : "text-[var(--ink-muted)]"
+                    )}
                     aria-hidden="true"
                   />
                 )}
               </div>
             </div>
             <div>
-              <div className="text-sm font-semibold text-[var(--ink-strong)]">
+              <div className={cn(
+                "text-sm font-semibold transition-colors duration-300",
+                isActive ? "text-[var(--ink-strong)]" : "text-[var(--ink-default)]"
+              )}>
                 {program.name}
               </div>
               <div className="text-xs text-[var(--ink-muted)]">
@@ -116,7 +144,8 @@ function ProgramDetail({ activeProgram }: ProgramDetailProps) {
 
   return (
     <article
-      className="bg-[var(--white)] rounded-3xl border border-[var(--neutral-200)]/70 shadow-sm md:shadow-md p-6 md:p-8"
+      key={activeProgram}
+      className="bg-[var(--white)] rounded-3xl border-2 border-[#d64545]/30 shadow-lg shadow-[var(--brand-maroon-900)]/5 p-6 md:p-8 animate-fade-in hover:shadow-xl hover:shadow-[#f60000]/40 hover:border-[#d64545]/50 transition-all duration-300 h-full flex flex-col justify-center"
       role="tabpanel"
     >
       <div className="flex items-start gap-4 md:gap-5">
@@ -131,7 +160,7 @@ function ProgramDetail({ activeProgram }: ProgramDetailProps) {
           </div>
         </div>
         <div className="flex-1">
-          <h3 className="text-2xl font-bold text-[var(--ink-strong)] mb-1.5">
+          <h3 className="text-2xl font-bold text-[#d64545] mb-1.5">
             {program.name}
           </h3>
           <p className="text-sm font-medium text-[var(--ink-muted)] mb-3">

@@ -1,15 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import {
-  Youtube,
-  Instagram,
-  Facebook,
-  Twitter,
-} from "lucide-react";
+import { Menu, X, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
 const socialIcons = {
   youtube: Youtube,
@@ -19,103 +14,73 @@ const socialIcons = {
 };
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const handleNavClick = () => {
-    setIsOpen(false);
-  };
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMounted]);
 
   return (
     <header
-      className="sticky top-0 z-50 w-full bg-[var(--brand-maroon-900)] text-[var(--ink-inverse)] backdrop-saturate-150 backdrop-blur-sm"
-      role="banner"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md shadow-sm py-2"
+          : "bg-transparent py-4"
+      )}
     >
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        {/* Desktop: Centered brand with social icons on right */}
-        <div className="hidden md:flex items-center justify-between h-[72px] relative">
-          {/* Center: Brand - absolutely centered */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Link
-              href="/#top"
-              className="text-2xl md:text-3xl font-bold text-[var(--white)] hover:text-[var(--pink-200)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2 rounded tracking-wide"
-              aria-label="Mahagathe Foundation Home"
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="relative flex items-center justify-between h-12 md:h-14">
+          {/* Mobile Menu Button (Left) */}
+          <div className="flex-1 md:hidden">
+            <button
+              className={cn(
+                "smooth p-2 rounded-full hover:bg-white/10 active:scale-95",
+                isScrolled ? "text-[var(--brand-maroon-900)]" : "text-white"
+              )}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
-              Mahagathe Foundation
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Empty Left Spacer for Desktop */}
+          <div className="hidden md:block flex-1" />
+
+          {/* Logo (Center) */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-shrink-0">
+            <Link href="/" className="flex items-center gap-2 group">
+              <span
+                className={cn(
+                  "text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300",
+                  isScrolled ? "text-[var(--brand-maroon-900)]" : "text-white"
+                )}
+              >
+                {siteConfig.name}
+              </span>
             </Link>
           </div>
 
-          {/* Right: Social Icons */}
-          <div className="flex items-center gap-2 ml-auto">
-            {Object.entries(siteConfig.social).map(([key, url]) => {
-              const Icon = socialIcons[key as keyof typeof socialIcons];
-              return (
-                <a
-                  key={key}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-7 h-7 flex items-center justify-center rounded-full bg-[var(--brand-mauve-600)]/40 backdrop-blur-sm opacity-95 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2"
-                  aria-label={`Visit our ${key} page`}
-                  title={key}
-                >
-                  {Icon && (
-                    <Icon
-                      className="w-5 h-5 text-[var(--white)]"
-                      aria-hidden="true"
-                    />
-                  )}
-                  <span className="sr-only">{key}</span>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Mobile: Brand left, Hamburger right */}
-        <div className="md:hidden flex items-center justify-between h-16">
-          <Link
-            href="/#top"
-            className="text-lg font-bold text-[var(--white)] hover:text-[var(--pink-200)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2 rounded tracking-wide"
-            aria-label="Mahagathe Foundation Home"
-          >
-            Mahagathe Foundation
-          </Link>
-
-          <button
-            className="p-2 text-[var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2 rounded"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? (
-              <X className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <Menu className="h-6 w-6" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Drawer */}
-      {isOpen && (
-        <nav
-          className="md:hidden bg-[var(--brand-maroon-900)] border-t border-[var(--neutral-300)]/30"
-          aria-label="Mobile navigation"
-        >
-          <div className="max-w-[1200px] mx-auto px-6 py-4 space-y-4">
-            {siteConfig.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={handleNavClick}
-                className="block py-3 text-[var(--white)] hover:text-[var(--pink-200)] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2 rounded px-2 min-h-[44px] flex items-center text-base"
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {/* Social Icons in Mobile Drawer */}
-            <div className="flex items-center gap-3 pt-4 border-t border-[var(--neutral-300)]/30">
+          {/* Social Icons (Right) */}
+          <div className="flex-1 flex justify-end items-center">
+            <div className="flex items-center gap-3 pl-4">
               {Object.entries(siteConfig.social).map(([key, url]) => {
                 const Icon = socialIcons[key as keyof typeof socialIcons];
                 return (
@@ -124,23 +89,50 @@ export function Header() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--brand-mauve-600)]/40 backdrop-blur-sm opacity-95 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2"
-                    aria-label={`Visit our ${key} page`}
-                  >
-                    {Icon && (
-                      <Icon
-                        className="w-5 h-5 text-[var(--white)]"
-                        aria-hidden="true"
-                      />
+                    className={cn(
+                      "smooth w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 active:scale-95",
+                      isScrolled
+                        ? "bg-[var(--brand-mauve-600)]/10 text-[var(--brand-maroon-900)] hover:bg-[var(--brand-mauve-600)]/30"
+                        : "bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm"
                     )}
-                    <span className="sr-only">{key}</span>
+                    aria-label={key}
+                  >
+                    {Icon && <Icon className="w-5 h-5" />}
                   </a>
                 );
               })}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      <div
+        className={cn(
+          "md:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-in-out bg-white/95 backdrop-blur-xl border-t border-white/10",
+          isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <nav className="flex flex-col p-6 space-y-6">
+          {/* Removed Nav Links as per request */}
+          <div className="flex gap-6 justify-center pt-2">
+            {Object.entries(siteConfig.social).map(([key, url]) => {
+              const Icon = socialIcons[key as keyof typeof socialIcons];
+              return (
+                <a
+                  key={key}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--brand-maroon-900)] hover:text-[var(--brand-rose-700)] transition-colors"
+                >
+                  {Icon && <Icon className="w-6 h-6" />}
+                </a>
+              );
+            })}
+          </div>
         </nav>
-      )}
+      </div>
     </header>
   );
 }

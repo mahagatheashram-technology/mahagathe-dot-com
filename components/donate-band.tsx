@@ -1,34 +1,42 @@
+"use client";
+
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
+import { useScrollAnimation } from "@/lib/use-scroll-animation";
 
 export function DonateBand() {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section
+      ref={ref}
       id="donate"
-      className="py-16 md:py-24 bg-[var(--brand-maroon-900)] relative"
+      className={`py-16 md:py-24 bg-[var(--brand-maroon-900)] relative overflow-hidden transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
       aria-labelledby="donate-heading"
     >
       {/* Optional gradient overlay */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-banner-gradient opacity-50" />
 
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[var(--brand-rose-700)] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[var(--brand-rose-700)] rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      </div>
+
       <Container maxWidth="narrow">
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h2
-            id="donate-heading"
-            className="text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--ink-inverse)] mb-6"
-          >
-            Ready to help?
-          </h2>
-          <p className="text-lg md:text-xl mb-8 text-[var(--ink-inverse)]/90">
-            Give securely via our main donations portal.
+        <div className="max-w-3xl mx-auto text-center relative z-10 animate-slide-up">
+          <p className="text-lg md:text-xl text-[var(--white)] font-medium">
+            To learn more about Mahagathe and our mission visit{" "}
+            <a
+              href="https://mahagathe.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--brand-rose-200)] transition-colors"
+            >
+              mahagathe.org
+            </a>
           </p>
-          <a
-            href={siteConfig.donationUrl}
-            className="inline-flex items-center justify-center bg-[var(--white)] text-[var(--brand-maroon-900)] h-12 md:h-14 px-8 md:px-10 text-base md:text-lg rounded-full font-semibold shadow-md hover:bg-[var(--mahagathe-red)] hover:text-[var(--ink-inverse)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mahagathe-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--brand-maroon-900)]"
-            aria-label="Donate at Mahagathe.org - Opens donation portal"
-          >
-            Donate at Mahagathe.org
-          </a>
         </div>
       </Container>
     </section>
