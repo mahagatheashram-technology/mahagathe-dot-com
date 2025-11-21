@@ -11,7 +11,7 @@ export function About() {
     <section
       ref={ref}
       id="about"
-      className={`py-16 md:py-20 bg-[var(--white)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      className={`pt-16 pb-24 md:pt-20 md:pb-32 bg-[var(--white)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       aria-labelledby="about-heading"
     >

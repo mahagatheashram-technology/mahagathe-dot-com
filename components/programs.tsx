@@ -47,12 +47,12 @@ export function Programs() {
       <Container maxWidth="narrow">
         <h2
           id="programs-heading"
-          className="text-4xl md:text-5xl font-bold text-[var(--ink-strong)] text-center mb-8 md:mb-10 animate-slide-up"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--ink-strong)] text-center mb-8 md:mb-10 animate-slide-up"
         >
           Our Programs
         </h2>
         <div
-          className="mt-6 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] items-stretch animate-fade-in animation-delay-200"
+          className="mt-8 md:mt-8 grid gap-8 md:gap-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] items-stretch animate-fade-in animation-delay-200"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -74,60 +74,64 @@ interface ProgramTabsProps {
 
 function ProgramTabs({ activeIndex, onChange }: ProgramTabsProps) {
   return (
-    <div
-      className="flex md:flex-col gap-4 overflow-x-auto md:overflow-visible pb-1 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
-      role="tablist"
-      aria-label="Program selector"
-    >
-      {siteConfig.programs.map((program, index) => {
-        const Icon = programIcons[program.name as keyof typeof programIcons];
-        const isActive = activeIndex === index;
+    <div className="relative w-full overflow-hidden">
+      <div
+        className="flex md:flex-col gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+        role="tablist"
+        aria-label="Program selector"
+      >
+        {siteConfig.programs.map((program, index) => {
+          const Icon = programIcons[program.name as keyof typeof programIcons];
+          const isActive = activeIndex === index;
 
-        return (
-          <button
-            key={program.name}
-            type="button"
-            onClick={() => onChange(index)}
-            className={cn(
-              "flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-300",
-              "min-w-[12rem] md:min-w-0",
-              isActive
-                ? "bg-[var(--white)] border-[var(--brand-rose-700)]/60 shadow-lg shadow-[#f60000]/40 scale-[1.02]"
-                : "bg-[var(--white)]/70 border-[var(--neutral-200)]/70 hover:bg-[var(--white)] hover:shadow-md hover:shadow-[#f60000]/40 hover:-translate-y-0.5"
-            )}
-            role="tab"
-            aria-selected={isActive}
-          >
-            <div className="flex-shrink-0">
-              <div className={cn(
-                "w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300",
-                isActive ? "bg-[var(--brand-rose-700)]/10" : "bg-[var(--neutral-200)]/30"
-              )}>
-                {Icon && (
-                  <Icon
-                    className={cn(
-                      "w-5 h-5 transition-colors duration-300",
-                      isActive ? "text-[var(--brand-rose-700)]" : "text-[var(--ink-muted)]"
-                    )}
-                    aria-hidden="true"
-                  />
-                )}
+          return (
+            <button
+              key={program.name}
+              type="button"
+              onClick={() => onChange(index)}
+              className={cn(
+                "flex items-center gap-3 rounded-2xl border px-4 py-2.5 text-left transition-all duration-300 flex-shrink-0",
+                "w-[85vw] sm:w-[300px] md:w-auto",
+                isActive
+                  ? "bg-[var(--white)] border-[var(--brand-rose-700)]/60 shadow-lg shadow-[#f60000]/40 scale-[1.02]"
+                  : "bg-[var(--white)]/70 border-[var(--neutral-200)]/70 hover:bg-[var(--white)] hover:shadow-md hover:shadow-[#f60000]/40 hover:-translate-y-0.5"
+              )}
+              role="tab"
+              aria-selected={isActive}
+            >
+              <div className="flex-shrink-0">
+                <div className={cn(
+                  "w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300",
+                  isActive ? "bg-[var(--brand-rose-700)]/10" : "bg-[var(--neutral-200)]/30"
+                )}>
+                  {Icon && (
+                    <Icon
+                      className={cn(
+                        "w-5 h-5 transition-colors duration-300",
+                        isActive ? "text-[var(--brand-rose-700)]" : "text-[var(--ink-muted)]"
+                      )}
+                      aria-hidden="true"
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-            <div>
-              <div className={cn(
-                "text-sm font-semibold transition-colors duration-300",
-                isActive ? "text-[var(--ink-strong)]" : "text-[var(--ink-default)]"
-              )}>
-                {program.name}
+              <div>
+                <div className={cn(
+                  "text-sm font-semibold transition-colors duration-300",
+                  isActive ? "text-[var(--ink-strong)]" : "text-[var(--ink-default)]"
+                )}>
+                  {program.name}
+                </div>
+                <div className="text-xs text-[var(--ink-muted)]">
+                  {program.subtitle}
+                </div>
               </div>
-              <div className="text-xs text-[var(--ink-muted)]">
-                {program.subtitle}
-              </div>
-            </div>
-          </button>
-        );
-      })}
+            </button>
+          );
+        })}
+      </div>
+      {/* Fade Mask for Mobile */}
+      <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[var(--cream-60)] to-transparent pointer-events-none md:hidden" />
     </div>
   );
 }

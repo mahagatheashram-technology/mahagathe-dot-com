@@ -64,7 +64,7 @@ function Carousel() {
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
       {/* Main Image Card */}
-      <div className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-xl shadow-[var(--brand-maroon-900)]/10 hover:shadow-2xl hover:shadow-[#f60000]/40 transition-all duration-500 bg-[var(--cream-70)]">
+      <div className="relative aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-xl shadow-[var(--brand-maroon-900)]/10 hover:shadow-2xl hover:shadow-[#f60000]/40 transition-all duration-500 bg-[var(--cream-70)]">
         <div className="absolute inset-0 transition-opacity duration-500">
           <Image
             src={activitiesData[currentIndex].image}

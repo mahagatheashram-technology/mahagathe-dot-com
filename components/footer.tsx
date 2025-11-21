@@ -18,14 +18,12 @@ const socialIcons = {
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--brand-maroon-900)] text-white py-8 md:py-10 border-t border-white/10">
+    <footer className="bg-[var(--brand-maroon-900)] text-white py-12 md:py-10 border-t border-white/10">
       <Container maxWidth="narrow">
-        <div className="flex flex-col items-center gap-6 md:gap-8">
-
-
-          {/* Bottom Row: Icons (Left) and Copyright (Right) */}
-          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
-            {/* Social Icons (Left) */}
+        <div className="flex flex-col items-center gap-8">
+          {/* Bottom Row: Icons and Copyright */}
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+            {/* Social Icons */}
             <div className="flex gap-4">
               {Object.entries(siteConfig.social).map(([key, url]) => {
                 const Icon = socialIcons[key as keyof typeof socialIcons];
@@ -51,8 +49,8 @@ export function Footer() {
               })}
             </div>
 
-            {/* Copyright (Right) */}
-            <div className="text-sm text-white/60 font-light tracking-wide">
+            {/* Copyright */}
+            <div className="text-sm text-white/60 font-light tracking-wide text-center md:text-right">
               {siteConfig.name} &copy; {new Date().getFullYear()}. All Rights Reserved.
             </div>
           </div>

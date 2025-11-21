@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       <SkipLink />
       <Header />
-      <main id="main" className="pb-20 md:pb-0">
+      <main id="main" className="md:pb-0">
         <div id="top" />
         <Hero />
         <About />
@@ -22,7 +22,6 @@ export default function HomePage() {
         <DonateBand />
       </main>
       <Footer />
-      <MobileDonateBar />
     </>
   );
 }
