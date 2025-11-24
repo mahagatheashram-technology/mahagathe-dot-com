@@ -46,12 +46,15 @@ export const siteConfig = {
   about: {
     text: "Mahagathe is dedicated to providing practical support to families in need across health, nutrition, and education. Through our programs, we work to ensure dignity and access to essential services, empowering communities to thrive.",
   },
-  nav: [
-    { label: "About", href: "#about" },
-    { label: "Programs", href: "#programs" },
-    { label: "Activities", href: "#activities" },
-    { label: "Donate", href: "#donate" },
-    { label: "Contact", href: "#contact" },
-  ],
+  nav: {
+    left: [
+      { label: "Moments", href: "#activities" },
+      { label: "About us", href: "#about" },
+    ],
+    right: [
+      { label: "Our Programs", href: "#programs" },
+      { label: "Join us", href: "#contact" },
+    ],
+  },
 } as const;
 

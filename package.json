@@ -29,6 +29,8 @@
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.22",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.3",
     "husky": "^9.1.7",
