@@ -26,7 +26,7 @@ export function DonateBand() {
 
       <Container maxWidth="narrow">
         <div className="max-w-3xl mx-auto text-center relative z-10 animate-slide-up">
-          <p className="text-lg md:text-xl text-[var(--white)] font-medium">
+          <p className="text-lg md:text-xl text-[var(--white)] font-sans font-medium">
             To learn more about Mahagathe and our mission visit{" "}
             <a
               href="https://mahagathe.org"

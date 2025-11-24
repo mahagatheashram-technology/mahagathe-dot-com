@@ -93,7 +93,7 @@ export function Header() {
                 <div className="flex flex-col items-center">
                   <span
                     className={cn(
-                      "text-2xl lg:text-4xl font-extrabold tracking-tight transition-colors duration-300 leading-none",
+                      "text-2xl lg:text-4xl font-serif font-extrabold tracking-tight transition-colors duration-300 leading-none",
                       isScrolled ? "text-[var(--brand-maroon-900)]" : "text-white"
                     )}
                   >
@@ -101,7 +101,7 @@ export function Header() {
                   </span>
                   <span
                     className={cn(
-                      "text-[10px] lg:text-xs uppercase tracking-[0.3em] transition-colors duration-300 mt-1 font-semibold",
+                      "text-[10px] lg:text-xs uppercase tracking-[0.3em] transition-colors duration-300 mt-1 font-sans font-semibold",
                       isScrolled ? "text-[var(--brand-maroon-900)]/80" : "text-white/80"
                     )}
                   >

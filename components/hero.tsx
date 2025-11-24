@@ -68,7 +68,7 @@ export function Hero() {
       className="relative w-full bg-gradient-to-b from-[var(--brand-maroon-900)] from-0% via-[var(--brand-maroon-900)] via-30% to-[var(--mahagathe-red)] to-100% pt-36 pb-12 md:pt-40 md:pb-16"
     >
       <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-8">
 
           {/* Carousel Container - Distinct from background */}
           <div className="relative w-full aspect-[16/9] md:aspect-[3.5/1] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
@@ -109,12 +109,12 @@ export function Hero() {
           </div>
 
           {/* Text Content - In the "red gradiented space" below the image */}
-          <div className="text-center w-full max-w-5xl mx-auto space-y-6 animate-fade-in">
-            <div className="space-y-4">
-              <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
+          <div className="text-center w-full max-w-5xl mx-auto space-y-8 animate-fade-in">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-tight leading-tight drop-shadow-lg">
                 {slides[selectedIndex].title}
               </h1>
-              <p className="text-lg md:text-xl text-white/95 leading-relaxed font-normal max-w-4xl mx-auto">
+              <p className="text-lg md:text-xl text-white/95 leading-relaxed font-sans font-normal max-w-4xl mx-auto">
                 {slides[selectedIndex].description}
               </p>
             </div>

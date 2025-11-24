@@ -50,7 +50,7 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="text-sm text-white/60 font-light tracking-wide text-center md:text-right">
+            <div className="text-sm text-white/60 font-sans font-light tracking-wide text-center md:text-right">
               {siteConfig.name} &copy; {new Date().getFullYear()}. All Rights Reserved.
             </div>
           </div>

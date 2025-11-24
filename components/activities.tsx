@@ -79,7 +79,7 @@ function Carousel() {
 
           {/* Caption */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-center md:text-left">
-            <p className="text-white text-lg md:text-xl font-medium tracking-wide animate-slide-up">
+            <p className="text-white text-lg md:text-xl font-sans font-medium tracking-wide animate-slide-up">
               {activitiesData[currentIndex].caption}
             </p>
           </div>

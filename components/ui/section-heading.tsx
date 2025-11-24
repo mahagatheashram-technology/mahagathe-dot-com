@@ -20,12 +20,12 @@ export function SectionHeading({
     <div className={cn("text-center mb-12", className)}>
       <Component
         id={id}
-        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--ink-strong)] mb-4"
+        className="text-4xl md:text-5xl font-serif font-bold text-[var(--ink-strong)] mb-4"
       >
         {title}
       </Component>
       {subtitle && (
-        <p className="text-lg sm:text-xl text-[var(--ink-muted)] max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-[var(--ink-muted)] max-w-3xl mx-auto font-sans">
           {subtitle}
         </p>
       )}

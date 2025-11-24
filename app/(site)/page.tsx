@@ -16,8 +16,8 @@ export default function HomePage() {
       <main id="main" className="md:pb-0">
         <div id="top" />
         <Hero />
-        <About />
         <Programs />
+        <About />
         <Activities />
         <DonateBand />
       </main>

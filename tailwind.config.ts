@@ -61,6 +61,10 @@ const config: Config = {
         "32": "2rem",
         "48": "3rem",
       },
+      fontFamily: {
+        serif: ["var(--font-lora)", "serif"],
+        sans: ["var(--font-poppins)", "sans-serif"],
+      },
     },
   },
   plugins: [],
