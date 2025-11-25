@@ -11,8 +11,11 @@ export function About() {
     <section
       ref={ref}
       id="about"
-      className={`py-16 md:py-24 bg-[var(--cream-60)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      className={`py-40 md:py-64 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
+      style={{
+        background: "linear-gradient(to bottom, var(--white), var(--cream-60) 150px, var(--cream-60) calc(100% - 150px), var(--white))"
+      }}
       aria-labelledby="about-heading"
     >
       <Container>

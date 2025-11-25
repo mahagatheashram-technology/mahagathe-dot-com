@@ -14,25 +14,21 @@ const slides = [
   {
     id: "bhandara",
     title: "Bhandara",
-    description: "Providing nourishing meals to schoolchildren, villagers, and those in need, ensuring well-being, dignity, and harmony through Annadāna, the highest service.",
     image: "/program-bhandara.png",
   },
   {
     id: "ayuri",
     title: "Ayuri",
-    description: "Caring for the elderly, sick, and destitute is an integral part Sanatana Dharma. We provide old age homes with food, infrastructure, medicines, healthcare, and dignity through selfless service.",
     image: "/program-ayuri.png",
   },
   {
     id: "samriddhi",
     title: "Samriddhi",
-    description: "Samriddhi uplifts the underprivileged through emergency relief, livelihood support, annadāna, winter aid, and environmental efforts—restoring dignity, harmony, and balance in the spirit of Dharma.",
     image: "/program-samriddhi.png",
   },
   {
     id: "adhyaya",
     title: "Adhyaya",
-    description: "Uplifts underprivileged children through education by funding teachers, providing resources, and nurturing wisdom—ensuring knowledge prospers and transforms lives.",
     image: "/program-adhyaya.png",
   },
 ];
@@ -71,7 +67,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-8">
 
           {/* Carousel Container - Distinct from background */}
-          <div className="relative w-full aspect-[16/9] md:aspect-[3.5/1] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="relative w-full aspect-[4/3] md:aspect-[2.5/1] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <div className="h-full w-full" ref={emblaRef}>
               <div className="flex h-full w-full">
                 {slides.map((slide) => (
@@ -111,12 +107,22 @@ export function Hero() {
           {/* Text Content - In the "red gradiented space" below the image */}
           <div className="text-center w-full max-w-5xl mx-auto space-y-8 animate-fade-in">
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-tight leading-tight drop-shadow-lg">
-                {slides[selectedIndex].title}
-              </h1>
-              <p className="text-lg md:text-xl text-white/95 leading-relaxed font-sans font-normal max-w-4xl mx-auto">
-                {slides[selectedIndex].description}
-              </p>
+              <Link
+                href={`#program-${slides[selectedIndex].id}`}
+                className="inline-block hover:opacity-80 transition-opacity"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('programs');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    window.location.hash = `program-${slides[selectedIndex].id}`;
+                  }
+                }}
+              >
+                <h1 className="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight leading-tight drop-shadow-lg">
+                  {slides[selectedIndex].title}
+                </h1>
+              </Link>
             </div>
 
             <Link

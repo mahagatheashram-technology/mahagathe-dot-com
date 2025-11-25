@@ -25,22 +25,22 @@ export const siteConfig = {
     {
       name: "Āyuri",
       subtitle: "Healthcare Assistance",
-      description: "Helps cover essential treatments and medicines.",
+      description: "Caring for the elderly, sick, and destitute is an integral part Sanatana Dharma. We provide old age homes with food, infrastructure, medicines, healthcare, and dignity through selfless service.",
     },
     {
       name: "Bhandāra",
       subtitle: "Food Support",
-      description: "Ration kits and community meals.",
+      description: "Providing nourishing meals to schoolchildren, villagers, and those in need, ensuring well-being, dignity, and harmony through Annadāna, the highest service.",
     },
     {
       name: "Samriddhi",
       subtitle: "Emergency & Livelihood Aid",
-      description: "Bridge support for crises and recovery.",
+      description: "Samriddhi uplifts the underprivileged through emergency relief, livelihood support, annadāna, winter aid, and environmental efforts—restoring dignity, harmony, and balance in the spirit of Dharma.",
     },
     {
       name: "Adhyāya",
       subtitle: "Learning Support",
-      description: "Education kits, workshops, and guidance.",
+      description: "Uplifts underprivileged children through education by funding teachers, providing resources, and nurturing wisdom—ensuring knowledge prospers and transforms lives.",
     },
   ],
   about: {

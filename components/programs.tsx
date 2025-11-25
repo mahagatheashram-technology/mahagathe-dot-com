@@ -26,6 +26,29 @@ export function Programs() {
   const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#program-")) {
+        const programId = hash.replace("#program-", "");
+        const index = siteConfig.programs.findIndex(
+          (p) => p.name.toLowerCase() === programId.toLowerCase()
+        );
+        if (index !== -1) {
+          setActiveIndex(index);
+          setIsHovered(true); // Pause auto-rotation when manually selected
+        }
+      }
+    };
+
+    // Check on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  useEffect(() => {
     if (isHovered) return;
 
     const interval = setInterval(() => {
