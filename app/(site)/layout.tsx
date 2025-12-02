@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lora, Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { defaultMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import "@/styles/tokens.css";
 import "@/styles/globals.css";
 
-const inter = Inter({
+const lora = Lora({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-lora",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = defaultMetadata;
@@ -57,14 +64,14 @@ export default function SiteLayout({
   };
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${lora.variable} ${poppins.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         {children}
         <Analytics />
       </body>
