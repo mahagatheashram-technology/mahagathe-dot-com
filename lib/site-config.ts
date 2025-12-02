@@ -46,9 +46,23 @@ export const siteConfig = {
   about: {
     text: "Mahagathe is dedicated to providing practical support to families in need across health, nutrition, and education. Through our programs, we work to ensure dignity and access to essential services, empowering communities to thrive.",
   },
+  campaign: {
+    title: "Gau Seva: Protect & Feed Rescued Cows",
+    description:
+      "This campaign aims to provide food, shelter, and necessary medical care for rescued cows at Dakshineshwar Dham. Your contribution ensures they live with dignity and peace.",
+    image: "/program-bhandara.png",
+    raised: 103793,
+    goal: 125000,
+    funders: 36,
+    daysLeft: 12,
+    startDate: "01/12/2025",
+    endDate: "15/12/2025",
+    cause: "Animals",
+    status: "active", // 'active' | 'ended'
+  },
   nav: {
     left: [
-      { label: "Moments", href: "#activities" },
+      { label: "Campaign", href: "#campaign" },
       { label: "About us", href: "#about" },
     ],
     right: [
