@@ -7,6 +7,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
+import { DonationModal } from "@/components/donation-modal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -38,6 +39,8 @@ export function Hero() {
     Autoplay({ delay: 5000, stopOnInteraction: false }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [lockedProgram, setLockedProgram] = useState<string | null>(null);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -125,17 +128,16 @@ export function Hero() {
               </Link>
             </div>
 
-            <Link
-              href={siteConfig.donationUrl}
-              className="inline-block"
+            <Button
+              size="lg"
+              onClick={() => {
+                setLockedProgram(slides[selectedIndex].title);
+                setIsDonationModalOpen(true);
+              }}
+              className="bg-white text-[var(--brand-maroon-900)] hover:bg-white/90 font-bold text-lg px-10 py-6 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
             >
-              <Button
-                size="lg"
-                className="bg-white text-[var(--brand-maroon-900)] hover:bg-white/90 font-bold text-lg px-10 py-6 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-              >
-                Donate Now
-              </Button>
-            </Link>
+              Donate Now
+            </Button>
 
             {/* Indicators */}
             <div className="flex justify-center gap-3 pt-2">
@@ -157,6 +159,16 @@ export function Hero() {
 
         </div>
       </div>
+
+      <DonationModal
+        isOpen={isDonationModalOpen}
+        onClose={() => {
+          setIsDonationModalOpen(false);
+          setLockedProgram(null);
+        }}
+        campaignTitle={lockedProgram || slides[selectedIndex].title}
+        programTag={lockedProgram || slides[selectedIndex].title}
+      />
     </section>
   );
 }

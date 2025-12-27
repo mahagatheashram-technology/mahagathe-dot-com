@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { DonationModal } from "@/components/donation-modal";
 import { siteConfig } from "@/lib/site-config";
 import { Tag, Calendar, MessageSquare } from "lucide-react";
 import { useScrollAnimation } from "@/lib/use-scroll-animation";
@@ -12,6 +14,7 @@ export function Campaign() {
     const { ref, isVisible } = useScrollAnimation();
     const { campaign } = siteConfig;
     const percentage = Math.min(100, Math.round((campaign.raised / campaign.goal) * 100));
+    const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
     return (
         <section
@@ -119,14 +122,12 @@ export function Campaign() {
 
                             <div className="pt-4">
                                 {campaign.status === 'active' ? (
-                                    <a
-                                        href={siteConfig.donationUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <button
+                                        onClick={() => setIsDonationModalOpen(true)}
                                         className="block w-full py-4 bg-[#d64545] !text-white text-center font-bold text-lg rounded-xl hover:bg-[#b93a3a] transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                                     >
                                         Contribute Now
-                                    </a>
+                                    </button>
                                 ) : (
                                     <div className="w-full py-4 bg-[var(--neutral-200)] text-[var(--neutral-500)] text-center font-bold rounded-xl cursor-not-allowed">
                                         Campaign Ended
@@ -137,6 +138,13 @@ export function Campaign() {
                     </div>
                 </div>
             </Container>
+
+            <DonationModal
+                isOpen={isDonationModalOpen}
+                onClose={() => setIsDonationModalOpen(false)}
+                campaignTitle={campaign.title}
+                programTag={`Campaign: ${campaign.title}`}
+            />
         </section>
     );
 }
