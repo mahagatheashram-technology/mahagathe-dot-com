@@ -45,7 +45,7 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
                 {/* Branches */}
                 {/* Branch 1 (Top Left) */}
                 <path
-                    d="M200,400 C200,300 100,300 100,200"
+                    d="M200,400 C200,340 130,300 110,260"
                     stroke="var(--brand-maroon-900)"
                     strokeWidth="3"
                     fill="none"
@@ -53,7 +53,7 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
                 />
                 {/* Branch 2 (Top Right) */}
                 <path
-                    d="M200,400 C200,300 300,300 300,200"
+                    d="M200,400 C200,340 270,300 290,260"
                     stroke="var(--brand-maroon-900)"
                     strokeWidth="3"
                     fill="none"
@@ -61,7 +61,7 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
                 />
                 {/* Branch 3 (Bottom Left) */}
                 <path
-                    d="M200,400 C200,350 60,350 60,350"
+                    d="M200,400 C200,370 120,370 90,370"
                     stroke="var(--brand-maroon-900)"
                     strokeWidth="3"
                     fill="none"
@@ -69,7 +69,7 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
                 />
                 {/* Branch 4 (Bottom Right) */}
                 <path
-                    d="M200,400 C200,350 340,350 340,350"
+                    d="M200,400 C200,370 280,370 310,370"
                     stroke="var(--brand-maroon-900)"
                     strokeWidth="3"
                     fill="none"
@@ -136,10 +136,10 @@ function TreeNode({ isActive, onClick, program, position }: TreeNodeProps) {
     const Icon = programIcons[program.name as keyof typeof programIcons] || Heart;
 
     const positionClasses = {
-        "top-left": "top-[15%] left-[15%] md:left-[20%]",
-        "top-right": "top-[15%] right-[15%] md:right-[20%]",
-        "bottom-left": "top-[45%] left-[5%] md:left-[10%]",
-        "bottom-right": "top-[45%] right-[5%] md:right-[10%]",
+        "top-left": "top-[12%] left-[12%] md:left-[18%]",
+        "top-right": "top-[12%] right-[12%] md:right-[18%]",
+        "bottom-left": "top-[42%] left-[2%] md:left-[8%]",
+        "bottom-right": "top-[42%] right-[2%] md:right-[8%]",
     };
 
     return (
@@ -152,31 +152,32 @@ function TreeNode({ isActive, onClick, program, position }: TreeNodeProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
         >
-            <div
-                className={cn(
-                    "relative w-24 h-24 md:w-28 md:h-28 flex flex-col items-center justify-center transition-all duration-500",
-                    "before:content-[''] before:absolute before:inset-0 before:rotate-45 before:rounded-3xl before:transition-all before:duration-500",
-                    isActive
-                        ? "before:bg-[var(--brand-rose-700)] before:shadow-lg before:shadow-[#f60000]/40"
-                        : "before:bg-[var(--white)] before:border-2 before:border-[var(--brand-maroon-900)]/20 group-hover:before:border-[var(--brand-rose-700)]/50"
-                )}
-            >
-                <div className="relative z-10 flex flex-col items-center text-center p-2">
+            <div className="relative flex flex-col items-center">
+                {/* Circular Background */}
+                <div
+                    className={cn(
+                        "relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-all duration-500",
+                        isActive
+                            ? "bg-[var(--brand-rose-700)] shadow-lg shadow-[var(--brand-rose-700)]/40"
+                            : "bg-white border-2 border-[var(--brand-maroon-900)]/20 group-hover:border-[var(--brand-rose-700)]/50"
+                    )}
+                >
                     <Icon
                         className={cn(
-                            "w-10 h-10 mb-2 transition-colors duration-300",
+                            "w-10 h-10 md:w-12 md:h-12 transition-colors duration-300",
                             isActive ? "text-white" : "text-[var(--brand-maroon-900)]"
                         )}
                     />
-                    <span
-                        className={cn(
-                            "text-xs md:text-sm font-bold transition-colors duration-300",
-                            isActive ? "text-white" : "text-[var(--ink-strong)]"
-                        )}
-                    >
-                        {program.name}
-                    </span>
                 </div>
+                {/* Label below the circle */}
+                <span
+                    className={cn(
+                        "mt-2 text-xs md:text-sm font-bold transition-colors duration-300 whitespace-nowrap",
+                        isActive ? "text-[var(--brand-rose-700)]" : "text-[var(--ink-strong)]"
+                    )}
+                >
+                    {program.name}
+                </span>
             </div>
         </motion.button>
     );

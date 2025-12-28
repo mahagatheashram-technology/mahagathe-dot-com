@@ -154,23 +154,56 @@ export function Header() {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center ml-auto">
+          {/* Mobile Header */}
+          <div className="md:hidden flex items-center justify-between w-full px-2">
+            {/* Mobile Logo */}
+            <Link href="/" className="flex flex-col items-start">
+              <span
+                className={cn(
+                  "text-2xl font-serif font-extrabold tracking-tight transition-colors duration-300 leading-none",
+                  isScrolled ? "text-[var(--brand-maroon-900)]" : "text-white"
+                )}
+              >
+                Mahagathe
+              </span>
+              <span
+                className={cn(
+                  "text-[9px] uppercase tracking-[0.2em] transition-colors duration-300 mt-0.5 font-sans font-semibold",
+                  isScrolled ? "text-[var(--brand-maroon-900)]/80" : "text-white/80"
+                )}
+              >
+                Foundation
+              </span>
+            </Link>
+
+            {/* Mobile Menu Toggle */}
             <button
               className={cn(
-                "inline-flex items-center justify-center rounded-md p-2 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
-                isScrolled ? "text-[var(--brand-maroon-900)]" : "text-white"
+                "inline-flex items-center justify-center rounded-full p-3 transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
+                isScrolled
+                  ? "bg-[var(--brand-maroon-900)]/10 text-[var(--brand-maroon-900)]"
+                  : "bg-white/10 text-white backdrop-blur-sm"
               )}
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
 
           {/* Mobile Menu Overlay */}
           {isOpen && (
-            <div className="fixed inset-0 z-40 bg-[var(--brand-maroon-900)] text-white pt-24 px-6 animate-fade-in md:hidden overflow-y-auto">
+            <div className="fixed inset-0 z-[60] bg-[var(--brand-maroon-900)] text-white pt-6 px-6 animate-fade-in md:hidden overflow-y-auto">
+              {/* Close Button at top */}
+              <div className="flex justify-end mb-6">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="h-7 w-7" />
+                </button>
+              </div>
               <nav className="flex flex-col gap-8 pb-10">
                 <Link href="/" onClick={() => setIsOpen(false)} className="text-3xl font-bold text-center mb-4">
                   Mahagathe Foundation
