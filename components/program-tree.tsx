@@ -27,7 +27,7 @@ interface ProgramTreeProps {
 export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:hidden">
         {siteConfig.programs.map((program, index) => {
           const Icon =
             programIcons[program.name as keyof typeof programIcons] || Heart;
@@ -38,7 +38,7 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
               key={program.name}
               onClick={() => onChange(index)}
               className={cn(
-                "min-h-24 rounded-2xl border-2 p-4 text-left transition-all duration-300",
+                "min-h-[76px] rounded-2xl border-2 p-3 text-left transition-all duration-300 sm:min-h-24 sm:p-4",
                 isActive
                   ? "border-[var(--brand-rose-700)] bg-[var(--brand-rose-700)] text-white shadow-lg shadow-[var(--brand-rose-700)]/25"
                   : "border-[var(--brand-maroon-900)]/15 bg-white text-[var(--ink-strong)]"
@@ -46,16 +46,16 @@ export function ProgramTree({ activeIndex, onChange }: ProgramTreeProps) {
             >
               <Icon
                 className={cn(
-                  "mb-3 h-8 w-8",
+                  "hidden sm:mb-3 sm:block sm:h-8 sm:w-8",
                   isActive ? "text-white" : "text-[var(--brand-maroon-900)]"
                 )}
               />
-              <span className="block text-lg font-bold leading-tight">
+              <span className="block text-base font-bold leading-tight sm:text-lg">
                 {program.name}
               </span>
               <span
                 className={cn(
-                  "mt-1 block text-xs font-medium leading-snug",
+                  "mt-0.5 block text-[11px] font-medium leading-snug sm:mt-1 sm:text-xs",
                   isActive ? "text-white/80" : "text-[var(--ink-muted)]"
                 )}
               >
