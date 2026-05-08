@@ -44,13 +44,13 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-white/90 backdrop-blur-md shadow-md py-2"
-          : "bg-gradient-to-b from-black/60 to-transparent py-4"
+          : "bg-gradient-to-b from-black/75 via-black/40 to-transparent py-4"
       )}
     >
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative">
         <div className="flex items-center justify-between h-20">
-          {/* Far Left: Mahagathe.org Link (Desktop) */}
-          <div className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20">
+          {/* Far Left: Mahagathe.org Link (Desktop — lg+ only to avoid overflow at md) */}
+          <div className="hidden lg:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20">
             <a
               href="https://mahagathe.org"
               target="_blank"
@@ -143,8 +143,8 @@ export function Header() {
             </div>
           </div>
 
-          {/* Far Right: Social Icons (Desktop) */}
-          <div className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20">
+          {/* Far Right: Social Icons (Desktop — lg+ only to avoid overflow at md) */}
+          <div className="hidden lg:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20">
             <div className="flex items-center gap-4">
               {Object.entries(siteConfig.social).map(([key, url]) => {
                 const Icon = socialIcons[key as keyof typeof socialIcons];
