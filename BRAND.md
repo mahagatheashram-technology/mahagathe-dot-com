@@ -81,6 +81,7 @@ This document describes the brand color system for mahagathe.com. All colors are
 ## Accessibility
 
 All color combinations meet WCAG AA contrast requirements:
+
 - Text on cream surfaces: Use `text-text-strong` or `text-text-default` only
 - Text on maroon/plum: Use `text-text-inverse`
 - Buttons: White text on maroon, or maroon text on white
@@ -90,4 +91,3 @@ All color combinations meet WCAG AA contrast requirements:
 All colors are defined in `/styles/tokens.css` as CSS variables and mapped in `tailwind.config.ts`. Use Tailwind classes (e.g., `bg-brand-maroon`, `text-text-strong`) rather than hardcoding hex values.
 
 **Never use raw hex codes in components.** Always use the token system.
-

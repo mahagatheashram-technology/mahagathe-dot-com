@@ -20,7 +20,8 @@ export default function PrivacyPage() {
             </h1>
             <div className="prose prose-lg max-w-none space-y-6 text-[var(--ink-default)]">
               <p className="text-lg">
-                Last updated: {new Date().toLocaleDateString("en-US", {
+                Last updated:{" "}
+                {new Date().toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -69,8 +70,8 @@ export default function PrivacyPage() {
                   Contact Us
                 </h2>
                 <p>
-                  If you have questions about this Privacy Policy, please contact
-                  us at{" "}
+                  If you have questions about this Privacy Policy, please
+                  contact us at{" "}
                   <a
                     href={`mailto:${siteConfig.contact.email}`}
                     className="text-[var(--brand-rose-700)] underline hover:text-[var(--ink-black)]"
@@ -88,4 +89,3 @@ export default function PrivacyPage() {
     </>
   );
 }
-

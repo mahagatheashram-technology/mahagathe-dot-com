@@ -5,7 +5,8 @@ export const siteConfig = {
   description:
     "Care in action—supporting health, food, and learning with dignity. Your gift powers practical help—medical aid, meals, and education kits for families in need.",
   mission: {
-    headline: "Care in action—supporting health, food, and learning with dignity.",
+    headline:
+      "Care in action—supporting health, food, and learning with dignity.",
     subhead:
       "Your gift powers practical help—medical aid, meals, and education kits for families in need.",
   },
@@ -25,22 +26,26 @@ export const siteConfig = {
     {
       name: "Āyuri",
       subtitle: "Healthcare Assistance",
-      description: "Caring for the elderly, sick, and destitute is an integral part Sanatana Dharma. We provide old age homes with food, infrastructure, medicines, healthcare, and dignity through selfless service.",
+      description:
+        "Caring for the elderly, sick, and destitute is an integral part Sanatana Dharma. We provide old age homes with food, infrastructure, medicines, healthcare, and dignity through selfless service.",
     },
     {
       name: "Bhandāra",
       subtitle: "Food Support",
-      description: "Providing nourishing meals to schoolchildren, villagers, and those in need, ensuring well-being, dignity, and harmony through Annadāna, the highest service.",
+      description:
+        "Providing nourishing meals to schoolchildren, villagers, and those in need, ensuring well-being, dignity, and harmony through Annadāna, the highest service.",
     },
     {
       name: "Samriddhi",
       subtitle: "Emergency & Livelihood Aid",
-      description: "Samriddhi uplifts the underprivileged through emergency relief, livelihood support, annadāna, winter aid, and environmental efforts—restoring dignity, harmony, and balance in the spirit of Dharma.",
+      description:
+        "Samriddhi uplifts the underprivileged through emergency relief, livelihood support, annadāna, winter aid, and environmental efforts—restoring dignity, harmony, and balance in the spirit of Dharma.",
     },
     {
       name: "Adhyāya",
       subtitle: "Learning Support",
-      description: "Uplifts underprivileged children through education by funding teachers, providing resources, and nurturing wisdom—ensuring knowledge prospers and transforms lives.",
+      description:
+        "Uplifts underprivileged children through education by funding teachers, providing resources, and nurturing wisdom—ensuring knowledge prospers and transforms lives.",
     },
   ],
   about: {
@@ -71,4 +76,3 @@ export const siteConfig = {
     ],
   },
 } as const;
-

@@ -20,7 +20,8 @@ export default function TermsPage() {
             </h1>
             <div className="prose prose-lg max-w-none space-y-6 text-[var(--ink-default)]">
               <p className="text-lg">
-                Last updated: {new Date().toLocaleDateString("en-US", {
+                Last updated:{" "}
+                {new Date().toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -67,9 +68,10 @@ export default function TermsPage() {
                   Disclaimer
                 </h2>
                 <p>
-                  The materials on mahagathe.com are provided on an "as is"
-                  basis. Mahagathe makes no warranties, expressed or implied,
-                  and hereby disclaims and negates all other warranties.
+                  The materials on mahagathe.com are provided on an &quot;as
+                  is&quot; basis. Mahagathe makes no warranties, expressed or
+                  implied, and hereby disclaims and negates all other
+                  warranties.
                 </p>
               </section>
               <section>
@@ -96,4 +98,3 @@ export default function TermsPage() {
     </>
   );
 }
-

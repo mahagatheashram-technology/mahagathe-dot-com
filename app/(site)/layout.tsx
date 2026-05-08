@@ -64,7 +64,11 @@ export default function SiteLayout({
   };
 
   return (
-    <html lang="en" className={`${lora.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${lora.variable} ${poppins.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"
@@ -78,4 +82,3 @@ export default function SiteLayout({
     </html>
   );
 }
-

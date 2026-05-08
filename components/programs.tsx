@@ -5,12 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
 
 import { useScrollAnimation } from "@/lib/use-scroll-animation";
-import {
-  Heart,
-  UtensilsCrossed,
-  HandHeart,
-  BookOpen,
-} from "lucide-react";
+import { Heart, UtensilsCrossed, HandHeart, BookOpen } from "lucide-react";
 import { ProgramTree } from "./program-tree";
 
 const programIcons = {
@@ -64,8 +59,9 @@ export function Programs() {
     <section
       ref={ref}
       id="programs"
-      className={`bg-[var(--white)] py-16 md:py-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+      className={`bg-[var(--white)] py-16 md:py-20 transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
       aria-labelledby="programs-heading"
     >
       <Container>
@@ -81,10 +77,7 @@ export function Programs() {
           onMouseLeave={() => setIsHovered(false)}
         >
           <div className="order-2 lg:order-1 lg:-ml-12">
-            <ProgramTree
-              activeIndex={activeIndex}
-              onChange={setActiveIndex}
-            />
+            <ProgramTree activeIndex={activeIndex} onChange={setActiveIndex} />
           </div>
           <div className="order-1 lg:order-2 h-full">
             <ProgramDetail activeProgram={activeProgram} />
@@ -95,15 +88,14 @@ export function Programs() {
   );
 }
 
-
 interface ProgramDetailProps {
   activeProgram: string;
 }
 
 function ProgramDetail({ activeProgram }: ProgramDetailProps) {
-  const program = siteConfig.programs.find(
-    (p) => p.name === activeProgram
-  ) ?? siteConfig.programs[0];
+  const program =
+    siteConfig.programs.find((p) => p.name === activeProgram) ??
+    siteConfig.programs[0];
   const Icon = programIcons[program.name as keyof typeof programIcons];
 
   return (
