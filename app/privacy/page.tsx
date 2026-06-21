@@ -32,7 +32,7 @@ export default function PrivacyPage() {
                   Information We Collect
                 </h2>
                 <p>
-                  Mahagathe.com is a static informational website. We do not
+                  Ayuri.org is a static informational website. We do not
                   collect personal information through this website. If you
                   contact us via email or WhatsApp, we will use the information
                   you provide solely to respond to your inquiry.

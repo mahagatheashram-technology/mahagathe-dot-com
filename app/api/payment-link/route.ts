@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     // Build notes object with customer info for backend tracking
     const paymentNotes: Record<string, string> = {
       program: programTag || "General",
-      source: "mahagathe.com",
+      source: "ayuri.org",
     };
 
     // Add customer info to notes for easy backend lookup
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
             contact: customer.contact,
           },
         }),
-        callback_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://mahagathe.com"}/`,
+        callback_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ayuri.org"}/`,
         callback_method: "get",
       }),
     });

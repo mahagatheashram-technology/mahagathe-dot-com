@@ -32,7 +32,7 @@ export default function TermsPage() {
                   Acceptance of Terms
                 </h2>
                 <p>
-                  By accessing and using mahagathe.com, you accept and agree to
+                  By accessing and using ayuri.org, you accept and agree to
                   be bound by the terms and provision of this agreement.
                 </p>
               </section>
@@ -42,7 +42,7 @@ export default function TermsPage() {
                 </h2>
                 <p>
                   Permission is granted to temporarily view the materials on
-                  mahagathe.com for personal, non-commercial transitory viewing
+                  ayuri.org for personal, non-commercial transitory viewing
                   only. This is the grant of a license, not a transfer of title.
                 </p>
               </section>
@@ -68,7 +68,7 @@ export default function TermsPage() {
                   Disclaimer
                 </h2>
                 <p>
-                  The materials on mahagathe.com are provided on an &quot;as
+                  The materials on ayuri.org are provided on an &quot;as
                   is&quot; basis. Mahagathe makes no warranties, expressed or
                   implied, and hereby disclaims and negates all other
                   warranties.

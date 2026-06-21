@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Mahagathe Foundation",
   tagline: "Care in Action",
-  url: "https://mahagathe.com",
+  url: "https://ayuri.org",
   description:
     "Care in action—supporting health, food, and learning with dignity. Your gift powers practical help—medical aid, meals, and education kits for families in need.",
   mission: {
@@ -24,28 +24,68 @@ export const siteConfig = {
   },
   programs: [
     {
-      name: "Āyuri",
-      subtitle: "Healthcare Assistance",
-      description:
-        "Caring for the elderly, sick, and destitute is an integral part Sanatana Dharma. We provide old age homes with food, infrastructure, medicines, healthcare, and dignity through selfless service.",
-    },
-    {
       name: "Bhandāra",
-      subtitle: "Food Support",
+      slug: "bhandara",
+      subtitle: "Food & Nutrition",
+      image: "/program-bhandara.png",
       description:
-        "Providing nourishing meals to schoolchildren, villagers, and those in need, ensuring well-being, dignity, and harmony through Annadāna, the highest service.",
+        "Rooted in the tradition of Annadāna, Bhandāra works to prevent malnutrition by providing nourishing meals to those who need them most—ensuring no one goes hungry and every plate is served with dignity.",
     },
     {
-      name: "Samriddhi",
-      subtitle: "Emergency & Livelihood Aid",
+      name: "Prāyus",
+      slug: "prayus",
+      subtitle: "Healthcare",
+      image: "/placeholder-activity-1.jpg",
       description:
-        "Samriddhi uplifts the underprivileged through emergency relief, livelihood support, annadāna, winter aid, and environmental efforts—restoring dignity, harmony, and balance in the spirit of Dharma.",
+        "Prāyus delivers holistic healthcare through the time-honoured systems of Siddha, Ayurveda, and yoga—nurturing body and mind and making natural, accessible care a reality for every community.",
     },
     {
-      name: "Adhyāya",
-      subtitle: "Learning Support",
+      name: "Samṛti",
+      slug: "samriti",
+      subtitle: "Social Upliftment & Relief",
+      image: "/placeholder-activity-2.jpg",
       description:
-        "Uplifts underprivileged children through education by funding teachers, providing resources, and nurturing wisdom—ensuring knowledge prospers and transforms lives.",
+        "Samṛti empowers communities through livelihood support, animal welfare, and everyday assistance—and stands ready to provide swift relief during major crises and natural disasters.",
+    },
+    {
+      name: "Sampanna",
+      slug: "sampanna",
+      subtitle: "Women's Empowerment",
+      image: "/placeholder-activity-3.jpg",
+      description:
+        "Sampanna is devoted entirely to women's development—building skills, health, self-reliance, and self-dignity—so that every woman, including those left without support, can stand strong and independent.",
+    },
+    {
+      name: "Advika",
+      slug: "advika",
+      subtitle: "Education & Learning",
+      image: "/program-adhyaya.png",
+      description:
+        "Advika opens the doors of learning across every level—from teaching basic literacy to providing advanced study kits—nurturing knowledge that transforms lives and uplifts futures.",
+    },
+    {
+      name: "Saṃveṣṭi",
+      slug: "samvesti",
+      subtitle: "Sustainable Environment",
+      image: "/placeholder-activity-4.jpg",
+      description:
+        "Saṃveṣṭi cares for the earth through tree planting, the revival of sacred groves, soil protection, and water replenishment—restoring balance and harmony with nature.",
+    },
+    {
+      name: "Aspadam",
+      slug: "aspadam",
+      subtitle: "Shelter & Care",
+      image: "/program-ayuri.png",
+      description:
+        "Aspadam offers safe shelter to orphans, the abandoned, and the homeless—prioritising children and the elderly, and welcoming all who are physically unable to support themselves, with care and belonging.",
+    },
+    {
+      name: "Āśleṣa",
+      slug: "ashlesha",
+      subtitle: "Psycho-Spiritual Support",
+      image: "/placeholder-activity-5.jpg",
+      description:
+        "Āśleṣa provides emotional and mental support through counselling and rehabilitation—healing inner wounds and restoring strength, peace, and resilience through compassionate guidance.",
     },
   ],
   about: {

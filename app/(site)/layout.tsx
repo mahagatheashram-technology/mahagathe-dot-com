@@ -75,7 +75,7 @@ export default function SiteLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={poppins.className}>
+      <body className={poppins.className} suppressHydrationWarning>
         {children}
         <Analytics />
       </body>

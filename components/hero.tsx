@@ -11,28 +11,11 @@ import { DonationModal } from "@/components/donation-modal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const slides = [
-  {
-    id: "bhandara",
-    title: "Bhandara",
-    image: "/program-bhandara.png",
-  },
-  {
-    id: "ayuri",
-    title: "Ayuri",
-    image: "/program-ayuri.png",
-  },
-  {
-    id: "samriddhi",
-    title: "Samriddhi",
-    image: "/program-samriddhi.png",
-  },
-  {
-    id: "adhyaya",
-    title: "Adhyaya",
-    image: "/program-adhyaya.png",
-  },
-];
+const slides = siteConfig.programs.map((program) => ({
+  id: program.slug,
+  title: program.name,
+  image: program.image,
+}));
 
 export function Hero() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
