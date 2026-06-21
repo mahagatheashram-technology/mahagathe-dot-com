@@ -1,7 +1,8 @@
 node_modules
 .next
+.playwright-mcp
 out
 dist
 build
 *.lock
-
+temp_home.html

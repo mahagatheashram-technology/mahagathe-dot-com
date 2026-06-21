@@ -37,12 +37,7 @@ export function Button({
     lg: "h-14 px-8 text-lg min-w-[160px]",
   };
 
-  const classes = cn(
-    baseStyles,
-    variants[variant],
-    sizes[size],
-    className
-  );
+  const classes = cn(baseStyles, variants[variant], sizes[size], className);
 
   if (href) {
     return (

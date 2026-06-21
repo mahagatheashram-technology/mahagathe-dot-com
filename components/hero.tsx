@@ -11,28 +11,11 @@ import { DonationModal } from "@/components/donation-modal";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const slides = [
-  {
-    id: "bhandara",
-    title: "Bhandara",
-    image: "/program-bhandara.png",
-  },
-  {
-    id: "ayuri",
-    title: "Ayuri",
-    image: "/program-ayuri.png",
-  },
-  {
-    id: "samriddhi",
-    title: "Samriddhi",
-    image: "/program-samriddhi.png",
-  },
-  {
-    id: "adhyaya",
-    title: "Adhyaya",
-    image: "/program-adhyaya.png",
-  },
-];
+const slides = siteConfig.programs.map((program) => ({
+  id: program.slug,
+  title: program.name,
+  image: program.image,
+}));
 
 export function Hero() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
@@ -68,18 +51,21 @@ export function Hero() {
     >
       <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
         <div className="flex flex-col items-center gap-8">
-
           {/* Carousel Container - Distinct from background */}
           <div className="relative w-full aspect-[4/3] md:aspect-[2.5/1] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             <div className="h-full w-full" ref={emblaRef}>
               <div className="flex h-full w-full">
                 {slides.map((slide) => (
-                  <div className="relative h-full w-full flex-[0_0_100%]" key={slide.id}>
+                  <div
+                    className="relative h-full w-full flex-[0_0_100%]"
+                    key={slide.id}
+                  >
                     <Image
                       src={slide.image}
                       alt={slide.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 1152px"
                       priority
                     />
                     {/* Subtle overlay for image depth, but text is NOT here */}
@@ -115,9 +101,9 @@ export function Hero() {
                 className="inline-block hover:opacity-80 transition-opacity"
                 onClick={(e) => {
                   e.preventDefault();
-                  const element = document.getElementById('programs');
+                  const element = document.getElementById("programs");
                   if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({ behavior: "smooth" });
                     window.location.hash = `program-${slides[selectedIndex].id}`;
                   }
                 }}
@@ -156,7 +142,6 @@ export function Hero() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
 

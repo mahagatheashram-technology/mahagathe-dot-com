@@ -20,7 +20,8 @@ export default function TermsPage() {
             </h1>
             <div className="prose prose-lg max-w-none space-y-6 text-[var(--ink-default)]">
               <p className="text-lg">
-                Last updated: {new Date().toLocaleDateString("en-US", {
+                Last updated:{" "}
+                {new Date().toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -31,7 +32,7 @@ export default function TermsPage() {
                   Acceptance of Terms
                 </h2>
                 <p>
-                  By accessing and using mahagathe.com, you accept and agree to
+                  By accessing and using ayuri.org, you accept and agree to
                   be bound by the terms and provision of this agreement.
                 </p>
               </section>
@@ -41,7 +42,7 @@ export default function TermsPage() {
                 </h2>
                 <p>
                   Permission is granted to temporarily view the materials on
-                  mahagathe.com for personal, non-commercial transitory viewing
+                  ayuri.org for personal, non-commercial transitory viewing
                   only. This is the grant of a license, not a transfer of title.
                 </p>
               </section>
@@ -67,9 +68,10 @@ export default function TermsPage() {
                   Disclaimer
                 </h2>
                 <p>
-                  The materials on mahagathe.com are provided on an "as is"
-                  basis. Mahagathe makes no warranties, expressed or implied,
-                  and hereby disclaims and negates all other warranties.
+                  The materials on ayuri.org are provided on an &quot;as
+                  is&quot; basis. Mahagathe makes no warranties, expressed or
+                  implied, and hereby disclaims and negates all other
+                  warranties.
                 </p>
               </section>
               <section>
@@ -96,4 +98,3 @@ export default function TermsPage() {
     </>
   );
 }
-

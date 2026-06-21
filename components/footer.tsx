@@ -2,12 +2,7 @@ import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
-import {
-  Youtube,
-  Instagram,
-  Facebook,
-  Twitter,
-} from "lucide-react";
+import { Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
 const socialIcons = {
   youtube: Youtube,
@@ -51,7 +46,8 @@ export function Footer() {
 
             {/* Copyright */}
             <div className="text-sm text-white/60 font-sans font-light tracking-wide text-center md:text-right">
-              {siteConfig.name} &copy; {new Date().getFullYear()}. All Rights Reserved.
+              {siteConfig.name} &copy; {new Date().getFullYear()}. All Rights
+              Reserved.
             </div>
           </div>
         </div>

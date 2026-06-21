@@ -20,7 +20,8 @@ export default function RefundPage() {
             </h1>
             <div className="prose prose-lg max-w-none space-y-6 text-[var(--ink-default)]">
               <p className="text-lg">
-                Last updated: {new Date().toLocaleDateString("en-US", {
+                Last updated:{" "}
+                {new Date().toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -94,4 +95,3 @@ export default function RefundPage() {
     </>
   );
 }
-

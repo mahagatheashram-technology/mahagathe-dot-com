@@ -16,8 +16,9 @@ export function Activities() {
     <section
       ref={ref}
       id="activities"
-      className={`py-32 md:py-48 bg-[var(--white)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+      className={`py-32 md:py-48 bg-[var(--white)] transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
       aria-labelledby="activities-heading"
     >
       <Container maxWidth="narrow">

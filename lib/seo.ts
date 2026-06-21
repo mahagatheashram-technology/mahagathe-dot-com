@@ -19,6 +19,10 @@ export const defaultMetadata: Metadata = {
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
+  icons: {
+    icon: "/brand/mahagathe-logo.png",
+    apple: "/brand/mahagathe-logo.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -57,4 +61,3 @@ export const defaultMetadata: Metadata = {
     // Add verification codes here when available
   },
 };
-

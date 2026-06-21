@@ -29,17 +29,20 @@ A single-page, donation-focused website for mahagathe.com built with Next.js (Ap
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/mahagatheashram-technology/mahagathe-dot-com.git
 cd mahagathe-dot-com
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -90,6 +93,7 @@ mahagathe-dot-com/
 ### Site-Wide Content
 
 Edit `/lib/site-config.ts` to update:
+
 - Mission statement and tagline
 - Program descriptions
 - Contact information
@@ -99,6 +103,7 @@ Edit `/lib/site-config.ts` to update:
 ### Activities Gallery
 
 Edit `/content/activities.json` to update the gallery items. Each item should have:
+
 - `id`: Unique identifier
 - `caption`: Image caption/description
 - `image`: Path to image in `/public` directory
@@ -106,6 +111,7 @@ Edit `/content/activities.json` to update the gallery items. Each item should ha
 ### Legal Pages
 
 Edit the following files for legal content:
+
 - `/app/privacy/page.tsx` - Privacy Policy
 - `/app/terms/page.tsx` - Terms of Use
 - `/app/refund/page.tsx` - Refund & Cancellation Policy

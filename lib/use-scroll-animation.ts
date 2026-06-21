@@ -3,44 +3,33 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useScrollAnimation(threshold = 0.1) {
-    const ref = useRef<HTMLElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-    // Ensure we're mounted before applying animations
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+  useEffect(() => {
+    const element = ref.current;
 
-    useEffect(() => {
-        if (!isMounted) return;
+    if (!element) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    // Once visible, stop observing
-                    if (ref.current) {
-                        observer.unobserve(ref.current);
-                    }
-                }
-            },
-            {
-                threshold,
-                rootMargin: "0px 0px -100px 0px", // Trigger slightly before element enters viewport
-            }
-        );
-
-        if (ref.current) {
-            observer.observe(ref.current);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(element);
         }
+      },
+      {
+        threshold,
+        rootMargin: "0px 0px -100px 0px",
+      }
+    );
 
-        return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
-        };
-    }, [threshold, isMounted]);
+    observer.observe(element);
 
-    return { ref, isVisible: isMounted ? isVisible : true };
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [threshold]);
+
+  return { ref, isVisible };
 }

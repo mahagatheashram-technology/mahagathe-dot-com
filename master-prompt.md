@@ -53,13 +53,13 @@ project structure (no code, just create these files)
 
 /components/hero.tsx, about.tsx, programs.tsx, activities.tsx, donate-band.tsx, footer.tsx, header.tsx, skip-link.tsx
 
-/components/ui/* — small primitives (button, container, section heading)
+/components/ui/\* — small primitives (button, container, section heading)
 
 /lib/site-config.ts — global constants (links, labels, contact)
 
 /lib/seo.ts — SEO helpers (title, description, OG)
 
-/public/brand/* — logo PNG; placeholders
+/public/brand/\* — logo PNG; placeholders
 
 /styles/globals.css — Tailwind base; CSS vars for tokens
 
@@ -124,7 +124,8 @@ X → https://x.com/mahagathe
 (LinkedIn may be added later.)
 
 sections (functional spec)
-1) Header / AnchorNav
+
+1. Header / AnchorNav
 
 Sticky at top; left = logo; right = inline anchors: About, Programs, Activities, Donate, Contact.
 
@@ -132,7 +133,7 @@ Add Skip to content component that jumps to #main.
 
 On mobile: collapsible menu with large tap targets.
 
-2) Hero
+2. Hero
 
 Full-width, above the fold.
 
@@ -142,13 +143,13 @@ Optional subtle background pattern; no heavy video.
 
 Ensure LCP ≤ 2.5s (avoid giant images).
 
-3) About
+3. About
 
 50–80 words, neutral tone, charity-first.
 
 Small supporting image or icon row is ok.
 
-4) Programs
+4. Programs
 
 4 cards in responsive grid (2×2 on mobile/tablet).
 
@@ -156,7 +157,7 @@ Each: name, 1–2 sentence summary, subtle icon.
 
 No click-through pages in v1.
 
-5) Activities Gallery
+5. Activities Gallery
 
 3×3 grid (mobile: 1 column; tablet: 2; desktop: 3).
 
@@ -164,7 +165,7 @@ Each tile: image (placeholder) with alt, short caption (TBD).
 
 Lazy-load images; use sizes for responsive images.
 
-6) Donate Band
+6. Donate Band
 
 Prominent, high-contrast band near the bottom.
 
@@ -172,7 +173,7 @@ Copy: “Ready to help? Give securely via our main donations portal.”
 
 Button: Donate at Mahagathe.org → external URL.
 
-7) Contact / Footer
+7. Contact / Footer
 
 Email; WhatsApp; socials (icons only).
 
